@@ -3,11 +3,15 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import postRoutes from "./routes/posts.js";
+
 const app = express();
 
 app.use(bodyParser.json({ limit: "50mb", extended: true })); //? กำหนด image size
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cors());
+
+app.use("/posts", postRoutes);
 
 const CONNECTION_URL =
   "mongodb+srv://javascriptmastery:Xcgn2034@cluster0.gxodr.mongodb.net/?retryWrites=true&w=majority";
